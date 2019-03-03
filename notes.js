@@ -51,6 +51,19 @@ const listNotes = () => {
     }
 }
 
+const readNote = (title) =>{
+    const notes = loadNotes()
+    const index = findIndex(notes,title)
+
+    if(index != -1) {
+        console.log(chalk.blue.inverse(notes[index].title))
+        console.log(chalk.magenta(notes[index].body))
+    }
+     else {
+         console.log(chalk.red("Note not found"))
+     }
+}
+
 const findIndex = ( notes, title) => {
     return notes.findIndex( (note) => note.title.toLowerCase() === title.toLowerCase())
 }
@@ -78,5 +91,6 @@ const loadNotes =  () => {
 module.exports = {
     addNotes: addNotes,
     removeNote: removeNote,
-    listNotes: listNotes
+    listNotes: listNotes,
+    readNote: readNote  
 }
